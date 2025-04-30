@@ -107,7 +107,7 @@ def chat_llm_faster(json_data , user_query) :
             Here are the bill details you’ll use to answer questions:
             {json_data}
 
-            Be sure to keep your answers grounded in the bill data, but feel free to respond warmly—like a helpful customer support agent who's also approachable and easy to talk to.""",
+            Be sure to keep your answers grounded in the bill data, but feel free to respond warmly—like a helpful customer support agent who's also approachable and easy to talk to.Avoid repeating the phrase 'feel free to ask' or similar politeness tags in every response. Use such phrases only occasionally and naturally.""",
             },
             {
                 "role" : "user" , "content" : user_query
