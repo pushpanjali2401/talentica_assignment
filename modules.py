@@ -8,7 +8,7 @@ load_dotenv()
 # class ReceiptInfo(BaseModel) :
 
 def pdf_to_image_extractor(uploaded_file , temp_dir) : 
-    import pdb; pdb.set_trace()
+    # import pdb; pdb.set_trace()
     reader = PdfReader(uploaded_file) # reading the file from streamlit
     all_pages = reader.pages
     pdf_name = reader.metadata['/Title'] 
