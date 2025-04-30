@@ -69,8 +69,8 @@ if uploaded_file is not None :
 
 
 
-        # resp = chat_llm_faster( st.session_state.json_data , query  ) # openai here
-        resp = "test here" #for trial
+        resp = chat_llm_faster( st.session_state.json_data , query  ) # openai here
+        # resp = "test here" #for trial
 
 
         # c = st.container( border = True)
