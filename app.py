@@ -51,7 +51,8 @@ if uploaded_file is not None :
     with st.expander("Download bill details : ") :
         st.write(json_data_formatted)
         json_str = json.dumps(json_data_formatted , indent = 2)
-        st.download_button(label = "download bill details" , data = json_str , file_name = f"{uploaded_file.name}.json" , icon=":material/download:")
+        json_file_name = os.path.splitext(uploaded_file.name)[0]
+        st.download_button(label = "download bill details" , data = json_str , file_name = f"{json_file_name}.json" , icon=":material/download:" , type = "secondary")
     # query  = st.text_input("Ask bill related query")
     if "messages" not in st.session_state :
         st.session_state.messages = []
