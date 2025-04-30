@@ -1,6 +1,5 @@
 import base64
 import streamlit as st
-from pypdf import PdfReader
 from io import StringIO , BytesIO
 from modules import pdf_to_image_extractor , image_field_extractor , image_field_extractor_faster, chat_llm , chat_llm_faster
 import tempfile
@@ -18,12 +17,12 @@ if uploaded_file is not None :
         with open(img_path , "rb") as image_file :
             img_data = base64.b64encode(image_file.read()).decode('utf-8') 
         if "json_data" not in st.session_state :
-        
-            # st.session_state.json_data = image_field_extractor(img_data)
+            try :
+                st.session_state.json_data = image_field_extractor_faster(img_data) #openai here
+            except :
+                st.session_state.json_data = {"Free openai rate limit reached. Contact pushpanjaliaero2401@gmail.com for further details"} 
 
-
-            # st.session_state.json_data = image_field_extractor_faster(img_data) #openai here
-            st.session_state.json_data = "----" # for trial
+            # st.session_state.json_data = "----" # for trial
             
         try :
             json_data_formatted = json.loads(st.session_state.json_data) 
@@ -35,11 +34,16 @@ if uploaded_file is not None :
     else :
         img_data = base64.b64encode(uploaded_file.read()).decode('utf-8') 
         if "json_data" not in st.session_state :
-            # st.session_state.json_data = image_field_extractor(img_data) 
+
+            try :
+                st.session_state.json_data = image_field_extractor_faster(img_data)  #openai here
+            except :
+                st.session_state.json_data = {"Free openai rate limit reached. Contact pushpanjaliaero2401@gmail.com for further details"} 
+            
+            
+            # st.session_state.json_data = "------" #for trial
 
 
-            # st.session_state.json_data = image_field_extractor_faster(img_data)  #openai here
-            st.session_state.json_data = "------" #for trial
         try :
             json_data_formatted = json.loads(st.session_state.json_data) 
         except :
