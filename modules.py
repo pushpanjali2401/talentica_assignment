@@ -5,10 +5,7 @@ from dotenv import load_dotenv
 from pydantic import BaseModel
 load_dotenv()
 
-# class ReceiptInfo(BaseModel) :
-
 def pdf_to_image_extractor(uploaded_file , temp_dir) : 
-    # import pdb; pdb.set_trace()
     reader = PdfReader(uploaded_file) # reading the file from streamlit
     all_pages = reader.pages
     pdf_name = reader.metadata['/Title'] 
@@ -89,7 +86,6 @@ def image_field_extractor_faster(img_64_data) :
 def chat_llm(json_data , user_query) :
     response = client.responses.create(
         model = "gpt-4o-mini",
-        # instructions = f"You are a helpful AI assistant. You task is to answer user query for  given bill details. Here is your bill details - {json_data}" ,
         instructions = f"""You are a helpful and friendly AI assistant. Your task is to assist the user by answering their queries based on the provided bill details. While staying informative and accurate, feel free to engage in light, polite chit-chat to make the conversation pleasant.
 
             Here are the bill details you’ll use to answer questions:
