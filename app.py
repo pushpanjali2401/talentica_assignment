@@ -15,38 +15,41 @@ if uploaded_file is not None :
         img_path = pdf_to_image_extractor(uploaded_file , temp_dir) 
         with open(img_path , "rb") as image_file :
             img_data = base64.b64encode(image_file.read()).decode('utf-8') 
-        if "json_data" not in st.session_state :
+        with st.spinner("extracting bill details , show_time = True ) :
+            if "json_data" not in st.session_state :
+                try :
+                    st.session_state.json_data = image_field_extractor_faster(img_data) #openai here
+                except :
+                    st.session_state.json_data = {"Free openai rate limit reached. Contact pushpanjaliaero2401@gmail.com for further details"} 
+    
+                # st.session_state.json_data = "----" # for trial
+                
             try :
-                st.session_state.json_data = image_field_extractor_faster(img_data) #openai here
+                json_data_formatted = json.loads(st.session_state.json_data) 
             except :
-                st.session_state.json_data = {"Free openai rate limit reached. Contact pushpanjaliaero2401@gmail.com for further details"} 
-
-            # st.session_state.json_data = "----" # for trial
-            
-        try :
-            json_data_formatted = json.loads(st.session_state.json_data) 
-        except :
-            json_data_formatted = st.session_state.json_data
+                json_data_formatted = st.session_state.json_data
 
         
 
     else :
         img_data = base64.b64encode(uploaded_file.read()).decode('utf-8') 
-        if "json_data" not in st.session_state :
+        with st.spinner("extracting bill details , show_time = True ) :
 
+            if "json_data" not in st.session_state :
+    
+                try :
+                    st.session_state.json_data = image_field_extractor_faster(img_data)  #openai here
+                except :
+                    st.session_state.json_data = {"Free openai rate limit reached. Contact pushpanjaliaero2401@gmail.com for further details"} 
+                
+                
+                # st.session_state.json_data = "------" #for trial
+    
+    
             try :
-                st.session_state.json_data = image_field_extractor_faster(img_data)  #openai here
+                json_data_formatted = json.loads(st.session_state.json_data) 
             except :
-                st.session_state.json_data = {"Free openai rate limit reached. Contact pushpanjaliaero2401@gmail.com for further details"} 
-            
-            
-            # st.session_state.json_data = "------" #for trial
-
-
-        try :
-            json_data_formatted = json.loads(st.session_state.json_data) 
-        except :
-            json_data_formatted = st.session_state.json_data
+                json_data_formatted = st.session_state.json_data
     with st.expander("Download bill details : ") :
         st.write(json_data_formatted)
         json_str = json.dumps(json_data_formatted , indent = 2)
