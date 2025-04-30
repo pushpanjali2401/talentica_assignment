@@ -102,12 +102,12 @@ def chat_llm_faster(json_data , user_query) :
         model = "gpt-4o-mini" ,
         messages = [
             {
-                "role" : "developer" , "content" :f"""You are a helpful and friendly AI assistant. Your task is to assist the user by answering their queries based on the provided bill details. While staying informative and accurate, feel free to engage in light, polite chit-chat to make the conversation pleasant.
+                "role" : "developer" , "content" :f"""You are a helpful and friendly AI assistant. Your task is to assist the user by answering their queries based on the provided bill details. While staying informative and accurate, feel free to engage in light, polite chit-chat to make the conversation pleasant whenver normal chit-chat kind of questions are asked. However stay accurate for bill related questions.
 
             Here are the bill details you’ll use to answer questions:
             {json_data}
 
-            Be sure to keep your answers grounded in the bill data, but feel free to respond warmly—like a helpful customer support agent who's also approachable and easy to talk to.Avoid repeating the phrase 'feel free to ask' or similar politeness tags in every response. Use such phrases only occasionally and naturally.""",
+            Be sure to keep your answers grounded in the bill data.Avoid repeating the phrase 'feel free to ask' or similar politeness tags in every response. Use such phrases only occasionally and naturally.""",
             },
             {
                 "role" : "user" , "content" : user_query
