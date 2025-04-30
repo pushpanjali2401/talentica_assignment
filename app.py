@@ -6,7 +6,7 @@ import tempfile
 import os
 import json
 
-st.title("Talentic GenAI assistant")
+st.title("Talentica GenAI billing assistant")
 # st.
 uploaded_file = st.file_uploader("Upload a PDF" , type = ['pdf' , 'jpg' , 'jpeg' , 'png'])
 
