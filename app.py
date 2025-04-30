@@ -15,7 +15,7 @@ if uploaded_file is not None :
         img_path = pdf_to_image_extractor(uploaded_file , temp_dir) 
         with open(img_path , "rb") as image_file :
             img_data = base64.b64encode(image_file.read()).decode('utf-8') 
-        with st.spinner("extracting bill details , show_time = True ) :
+        with st.spinner("extracting bill details" , show_time = True ) :
             if "json_data" not in st.session_state :
                 try :
                     st.session_state.json_data = image_field_extractor_faster(img_data) #openai here
@@ -33,7 +33,7 @@ if uploaded_file is not None :
 
     else :
         img_data = base64.b64encode(uploaded_file.read()).decode('utf-8') 
-        with st.spinner("extracting bill details , show_time = True ) :
+        with st.spinner("extracting bill details" , show_time = True ) :
 
             if "json_data" not in st.session_state :
     
