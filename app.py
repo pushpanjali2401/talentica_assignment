@@ -7,7 +7,6 @@ import os
 import json
 
 st.title("Talentica GenAI billing assistant")
-# st.
 uploaded_file = st.file_uploader("Upload a PDF" , type = ['pdf' , 'jpg' , 'jpeg' , 'png'])
 
 if uploaded_file is not None :
@@ -29,7 +28,7 @@ if uploaded_file is not None :
         except :
             json_data_formatted = st.session_state.json_data
 
-        # st.write(json_data_formatted)
+        
 
     else :
         img_data = base64.b64encode(uploaded_file.read()).decode('utf-8') 
@@ -53,7 +52,6 @@ if uploaded_file is not None :
         json_str = json.dumps(json_data_formatted , indent = 2)
         json_file_name = os.path.splitext(uploaded_file.name)[0]
         st.download_button(label = "download bill details" , data = json_str , file_name = f"{json_file_name}.json" , icon=":material/download:" , type = "secondary")
-    # query  = st.text_input("Ask bill related query")
     if "messages" not in st.session_state :
         st.session_state.messages = []
 
