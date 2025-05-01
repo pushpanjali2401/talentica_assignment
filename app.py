@@ -7,7 +7,7 @@ import os
 import json
 
 st.title("Talentica GenAI billing assistant")
-uploaded_file = st.file_uploader("Upload a PDF" , type = ['pdf' , 'jpg' , 'jpeg' , 'png'])
+uploaded_file = st.file_uploader("Upload a bill image or pdf with image" , type = ['pdf' , 'jpg' , 'jpeg' , 'png'])
 
 if uploaded_file is not None :
     if uploaded_file.type == "application/pdf" :
