@@ -20,7 +20,8 @@ if uploaded_file is not None :
                 try :
                     st.session_state.json_data = image_field_extractor_faster(img_data) #openai here
                 except :
-                    st.session_state.json_data = {"Free openai rate limit reached. Contact pushpanjaliaero2401@gmail.com for further details"} 
+                    st.session_state.json_data = {"error" : "Free openai rate limit reached. Contact pushpanjaliaero2401@gmail.com for further details"} 
+                    st.write('{"error" : "Free openai rate limit reached. Contact pushpanjaliaero2401@gmail.com for further details"}')
     
                 # st.session_state.json_data = "----" # for trial
                 
@@ -40,7 +41,8 @@ if uploaded_file is not None :
                 try :
                     st.session_state.json_data = image_field_extractor_faster(img_data)  #openai here
                 except :
-                    st.session_state.json_data = {"Free openai rate limit reached. Contact pushpanjaliaero2401@gmail.com for further details"} 
+                    st.session_state.json_data = {"error" : "Free openai rate limit reached. Contact pushpanjaliaero2401@gmail.com for further details"} 
+                    st.write('{"error" : "Free openai rate limit reached. Contact pushpanjaliaero2401@gmail.com for further details"}')
                 
                 
                 # st.session_state.json_data = "------" #for trial
